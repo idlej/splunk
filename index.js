@@ -23,7 +23,6 @@ class SplunkApi {
       method: 'get',
       url: '/search/scheduler',
     };
-    console.log(data);
     data = data || {};
     data['output_mode'] = 'json';
     const config = {
@@ -55,7 +54,6 @@ class SplunkApi {
       earliest_time: timerange[0] || '',
       latest_time: timerange[1] || '',
     };
-    console.log(data);
     const result = await this.request(fun, data);
     const rows = result.trim().split('\n');
     rows.splice(-1, 1);
