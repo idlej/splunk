@@ -55,6 +55,9 @@ class SplunkApi {
       latest_time: timerange[1] || '',
     };
     const result = await this.request(fun, data);
+    if(typeof result === 'object') {
+      return [];
+    }
     const rows = result.trim().split('\n');
     rows.splice(-1, 1);
     const records = rows.map((row) => {
